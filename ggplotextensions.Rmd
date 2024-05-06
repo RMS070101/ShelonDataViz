@@ -1,0 +1,31 @@
+---
+title: "ggplot Extensions"
+description: |
+  I was tasked to explain the ggplot extension ggrain. I showed it's relevance and importance in visualizations by showing three common plots; a scatter plot, box plot, and violin plot. I then showed how ggrain is a combination of all three of these plots, all in one. 
+ 
+---
+
+```{r, echo = FALSE}
+library(ggplot2)
+library(ggrain)
+library(gridExtra)
+data("diamonds")
+diamonds_Subset = diamonds[1:2000, ]
+```
+
+
+
+```{r, echo = FALSE}
+ggplot(diamonds_Subset, aes(x = cut, y = carat, fill = cut)) +
+               geom_violin() +
+               labs(title = "Violin Plot")
+
+```
+This is one of the "common visualizations" that I created to show the relevance of the 'ggrain' package. I took a subset of the first 2000 rows of the diamonds library. I decided to dive into the relationship between the diamond cut, ranging from fair to ideal, and how many carat's in the diamond. From this visualization, we can see a similar distribution of carat for good, very good, premium and ideal diamonds, while fair diamonds seem to be in their own category. 
+
+
+```{r, echo = FALSE}
+ggplot(diamonds_Subset, aes(cut , y = carat, fill = cut)) +
+	geom_rain(cov = "cut", rain.side = 'l', size = .2)
+```
+This is how you can show three separate visualizations in just one plot using 'ggrain'. This plot gives a lot more information than a simple violin plot as it now shows the distribution of each specific point value, as well as information on the quartiles, median, and range. This visualization uses the same data and variables as the previous visualization. However, in this, you can confirm that good, very good, premium, and ideal diamonds have an almost identical median of .73 carats. Meanwhile, fair diamonds tend to have .95 carats

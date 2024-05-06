@@ -1,0 +1,32 @@
+---
+title: "Reese Shelon"
+image: "me.jpg"
+links:
+  - label: LinkedIn
+    url: "https://www.linkedin.com/in/reese-shelon-8b79a3216/"
+  - label: GitHub
+    url: "https://github.com/"
+  - label: Email
+    url: "rms070@bucknell.edu"
+site: distill::distill_website
+output:
+  postcards::trestles
+---
+ 
+## Bio
+
+My name is Reese Shelon and I am a sophomore math major, concentrating in statisitcs. I think that throughout the course of this semester, my visualizations have steadily improved, as I have learned ways of eliminating bias through visualizations, as well as found ways of making them more accessible to a wider range of people. I hope you enjoy my data visualization gallery!
+
+
+## Education
+
+**Bucknell University** | Lewisburg, PA
+
+B.S. in Mathematics, Conc. Statistics | August 2022 - May 2026
+
+
+
+
+
+
+

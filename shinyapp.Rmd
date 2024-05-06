@@ -1,0 +1,8 @@
+---
+title: "Shiny App"
+description: |
+  I was tasked to use interactive visualizations to show students taking the intro level statistics course the importance of confidence levels.
+ 
+---
+
+<iframe src="https://abby-flynt.shinyapps.io/Kacy-Reese-SP24/" class="l-screen-inset shaded" height="1000px"></iframe>

@@ -1,0 +1,78 @@
+---
+title: "Additional Visualizations"
+description: |
+  Here are some other visualizations that I have created throughout the course of this semester. 
+ 
+---
+
+## Additional Visualizations
+
+```{r, echo = FALSE}
+load("MATH230_Exam1_Data.RData")
+library(ggthemes)
+library(ggplot2)
+library(ggridges)
+
+hsb2$gender <- factor(hsb2$gender, levels = c("m", "f"), labels = c("Male", "Female"))
+
+hsb2$ses = factor(hsb2$ses, levels = c(1, 2, 3))
+
+levels(hsb2$ses) = c("low", "middle", "high")
+
+hsb2$race <- factor(hsb2$race, 
+                    levels = c("white", "hispanic", "asian", "african american"), 
+                    labels = c("White", "Hispanic", "Asian", "African American"), 
+                    ordered = TRUE)
+
+
+na_count = apply(hsb2, 1, function(x){sum(is.na(x))})
+
+
+total_score = hsb2$read + hsb2$write + hsb2$math + hsb2$science + hsb2$socst
+hsb2$total_score = total_score
+
+quantiles_total_score = quantile(hsb2$total_score)
+hsb2$cut_total_score = cut(hsb2$total_score, breaks = c(quantiles_total_score), labels = c("first", "second", "third", "fourth"))
+
+attach(hsb2)
+
+
+```
+
+
+```{r, echo = FALSE}
+ggplot(hsb2, aes(x = total_score, y = prog, fill = total_score)) +
+  geom_violin(fill = "lightblue", color = "palevioletred1") +
+  geom_boxplot(width = 0.2, aes(fill = prog), color = "deepskyblue1") +
+  labs(title = "Distribution of Total Score", x = "Total Score", y = "")+
+  theme_solarized()
+```
+Clean Cut - Probably one of my favorite plots that I learned how to create this semester were the violin plots with the boxplots within them. This one in specific is very aesthetically please as the yellow background goes well with the blue density plots, whilst the boxplots are also color coordinated by group. This relationship helps explore the distribution of test scores amongst three different groups. It is evident that the academic group tends to score more than all other groups as they have a higher mean and seem to have more large scores than all other groups.
+
+```{r, warning = FALSE, message = FALSE, echo = FALSE}
+library(ggplot2)
+library(Hmisc)
+library(hexbin)
+library(ggmosaic)
+```
+
+
+```{r, echo = FALSE}
+library(Lock5Data)
+data(StudentSurvey)
+# Replace the data frame with a subsetted version that includes only the rows without 
+# missing values.  
+# Recall the potential ethical/moral/racial implications of throwing out data.
+StudentSurvey = StudentSurvey[complete.cases(StudentSurvey), ]
+# Making Year an ordered factor.
+StudentSurvey$Year = factor(StudentSurvey$Year, 
+                          levels = c("FirstYear", "Sophomore", "Junior", "Senior"),
+                          ordered = TRUE)
+```
+
+```{r, out.width="100%", echo = FALSE}
+ggplot(StudentSurvey, aes(MathSAT, VerbalSAT)) + 
+  stat_density_2d(aes(fill = after_stat(level)), geom = "polygon", color = "grey", h = c(50, 50)) + 
+  scale_fill_distiller(palette = "Spectral")
+```
+SAT HEAT - This is a heatmap of the relationship between the SAT Math scores and the SAT Verbal scores. I do find that this graph is rather challenging to interpret, however it is unique and unlike any of the other graphs I have created throughout this course, hence why I am including it. 
