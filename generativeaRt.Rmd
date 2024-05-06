@@ -1,7 +1,7 @@
 ---
 title: "Generative aRt"
 description: |
-  I was tasked to create three different Generative Art pieces. "Generative Art" often refers to algorithmic art in which artists use systems of chemistry, biologoy, mechanics and robotics, mathematics, tiling and much more. The instructions were rather broad, allowing for creativity.
+  I was tasked to create three different Generative Art pieces. "Generative Art" often refers to algorithmic art in which artists use systems of chemistry, biology, mechanics and robotics, mathematics, tiling and much more. The instructions were rather broad, allowing for creativity.
  
 ---
 
